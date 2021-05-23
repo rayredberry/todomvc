@@ -36,7 +36,7 @@
 					<template x-for="todo in filteredTodos" :key="todo.id">
 						<li :class="{
 							'completed' : todo.completed,
-							'editing' : editingTodo
+							'editing' : editingTodo == todo
 						}">
 							<div class="view">
 								<input x-model="todo.completed" @click="toggleTodo(todo)" class="toggle" type="checkbox">
