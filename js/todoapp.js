@@ -1,7 +1,7 @@
 window.storeTodos = {
 	get todos(){
 		if(localStorage.getItem('todo-store') && localStorage.getItem('todo-store') != '[null]'){
-			return JSON.parse(localStorage.getItem('todo-store'))
+			return JSON.parse(localStorage.getItem('todo-store')).filter(todo => todo != null)
 		}else{
 			return [];
 		}
@@ -55,9 +55,9 @@ window.todoApp = function () {
 		},
 
 		completeEditing(todo){
-			console.log(todo.body.trim().length);
 			if(todo.body.trim().length == 0){
-				return this.cancelEditing(todo);
+				this.cancelEditing(todo);
+				this.deleteTodo(todo);
 			}
 
 			this.editingTodo = null;
